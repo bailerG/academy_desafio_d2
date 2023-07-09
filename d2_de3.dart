@@ -1,5 +1,9 @@
 void main() {
   BibliotecaDeMusicas().imprimeBiblioteca();
+  BibliotecaDeMusicas().pesquisar("bleed");
+  BibliotecaDeMusicas().pesquisar("Cosmo");
+  BibliotecaDeMusicas().pesquisar("179");
+  BibliotecaDeMusicas().pesquisar("Central");
 }
 
 // Cria uma classe para estruturar o objeto Musica
@@ -29,6 +33,17 @@ class BibliotecaDeMusicas {
     Musica("Bleed", "Meshuggah", "ObZen", 442),
   ];
 
+  void pesquisar(String termoDePesquisa) {
+    listaDeMusicas.forEach((musica) {
+      if (musica
+          .toString()
+          .toLowerCase()
+          .contains(termoDePesquisa.toLowerCase())) {
+        print("------ Resultado da pesquisa: ------\n${musica.toString()}");
+      }
+    });
+  }
+
   // Calcula o tempo total e converte em horas
   double tempoTotal() {
     int soma = 0;
@@ -46,10 +61,15 @@ class BibliotecaDeMusicas {
 
   // Imprime todas as musicas, a quantidade de musicas na biblioteca e o tempo total em horas
   void imprimeBiblioteca() {
+    print("================================================================\n");
+    print("Aqui estão todas as musicas:\n");
     listaDeMusicas.forEach((musica) {
       print(musica);
     });
+    print("================================================================\n");
     print("Nº total de musicas na biblioteca: ${listaDeMusicas.length}");
     print("Tempo total: ${tempoTotal().toStringAsFixed(2)} horas");
+    print(
+        "\n================================================================\n");
   }
 }
